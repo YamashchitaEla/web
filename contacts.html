@@ -4,66 +4,99 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Лабораторна 3 - Про нас</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <title>Лабораторна 4 - Контакти</title>
+    <meta name="description" content="Зв'язок з командою: форма зворотного зв’язку та контактні дані."/>
+    <link rel="icon" href="assets/images/favicon.ico"/>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <main class="main">
-        <h2 class="main__title">Зв'яжіться з нами</h2>
+    <div class="layout">
+        <header class="header">
+            <h1 class="header__title">Лабораторна № 4</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav__link">Головна</a>
+                <a href="about.html" class="nav__link">Про нас</a>
+                <a href="contacts.html" class="nav__link nav__link--cta">Контакти</a>
+            </nav>
+        </header>
 
-        <form class="contact-form" action="#" method="post">
-            <div class="contact-form__item">
-                <label for="name" class="contact-form__label">Ім'я</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    class="contact-form__input" 
-                    required 
-                    placeholder="Ваше ім'я"    
-                />
-            </div>
-            <div class="contact-form__item">
-                <label for="email" class="contact-form__label">Email</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    class="contact-form__input"
-                    required 
-                    placeholder="Baш email"  
-                />
-            </div>
-            <div class="contact-form__item">
-                <label for="msg" class="contact-form__label">Повідомлення</label>
-                <textarea 
-                    id="msg" 
-                    name="msg" 
-                    class="contact-form__textarea"
-                    placeholder="Ваше повідомлення"
-                ></textarea>
-            </div>
-            <button type="submit" class="contact-form__button">Надіслати</button>
-        </form>
-    </main>
+        <aside class="sidenav">
+            <section class="sidebar sidebar--links" aria-label="Корисні посилання">
+                <h3 class="sidebar__title">Корисні посилання</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="https://developer.mozilla.org/" target="_blank"
+                            rel="noopener noreferrer">MDN Web Docs</a>
+                    </li>
+                </ul>
+            </section>
 
-    <aside class="sidebar sidebar--social" aria-label="Соціальні мережі">
-        <h3 class="sidebar__title">Соціальні мережі</h3>
-        <ul class="sidebar__list">
-            <li class="sidebar__item"><a href="#" aria-label="Ми у Facebook" class="sidebar--links">Facebook</a></li>
-            <li class="sidebar__item"><a href="#" aria-label="Ми у Instagram" class="sidebar--links">Instagram</a></li>
-            <li class="sidebar__item"><a href="#" aria-label="Ми у LinkedIn" class="sidebar--links">LinkedIn</a></li>
-        </ul>
-    </aside>
-    
-    <footer class="site-footer">
-        <address>
-            <p>Email: <a href="mailto:yamashchita_lab2@mail.com">yamashchita_lab2@mail.com</a></p>
-            <p>Телефон: <a href="tel:+380636005830">+38 (063) 600-58-30</a></p>
-            <p>Адреса: м. Запоріжжя, вул. Лермонтова, 48</p>
-        </address>
-        <p>© 2025 Група 6.1213-2пі</p>
-    </footer>
+            <section class="sidebar sidebar--values" aria-label="Цінності">
+                <h3 class="sidebar__title">Цінності</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">Якість коду та прозорість</li>
+                    <li class="sidebar__item">Навчання через практику</li>
+                    <li class="sidebar__item">Комунікація та підтримка</li>
+                </ul>
+            </section>
+
+            <section class="sidebar sidebar--social" aria-label="Соціальні мережі">
+                <h3 class="sidebar__title">Соціальні мережі</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item"><a class="sidebar__link" href="#" aria-label="Facebook">Facebook</a></li>
+                    <li class="sidebar__item"><a class="sidebar__link" href="#" aria-label="Instagram">Instagram</a>
+                    </li>
+                    <li class="sidebar__item"><a class="sidebar__link" href="#" aria-label="LinkedIn">LinkedIn</a></li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="main">
+            <h2 class="main__title">Зв'яжіться з нами</h2>
+            <form class="contact-form" action="#" method="post">
+                <div class="contact-form__item">
+                    <label for="name" class="contact-form__label">Ім'я</label>
+                    <input type="text" id="name" name="name" class="contact-form__input" required
+                        placeholder="Ваше ім'я" />
+                </div>
+                <div class="contact-form__item">
+                    <label for="email" class="contact-form__label">Email</label>
+                    <input type="email" id="email" name="email" class="contact-form__input" required
+                        placeholder="Baш email" />
+                </div>
+                <div class="contact-form__item">
+                    <label for="msg" class="contact-form__label">Повідомлення</label>
+                    <textarea id="msg" name="msg" class="contact-form__textarea"
+                        placeholder="Ваше повідомлення"></textarea>
+                </div>
+                <button type="submit" class="contact-form__button">Надіслати</button>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <p class="footer__text">© 2025 Група <span class="footer__group-name">6.1213-2пі</span></p>
+        
+                <address class="footer__contacts" aria-label="Наші контакти">
+                    <h3 class="footer__contacts-title">Наші контакти</h3>
+                    <ul class="footer__contacts-list">
+                        <li class="footer__contacts-item">
+                            <span class="footer__label">Email:</span>
+                            <a class="footer__link" href="21rikitiki@gmail.com">21rikitiki@gmail.com</a>
+                        </li>
+                        <li class="footer__contacts-item">
+                            <span class="footer__label">Телефон:</span>
+                            <a class="footer__link" href="tel:+380637006030">+38 (063) 700-60-30</a>
+                        </li>
+                        <li class="footer__contacts-item">
+                            <span class="footer__label">Адреса:</span>
+                            <span>Запоріжжя, вул. Патріотична, 57Б</span>
+                        </li>
+                    </ul>
+                </address>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
