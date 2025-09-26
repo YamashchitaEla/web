@@ -21,6 +21,10 @@
     --c-primary-600: var(--brand-600);  /* темніший зелений для hover */
     --c-surface: var(--surface);        /* фон «карток»/секцій */
     --c-border: var(--brand);           /* світла межа */ 
+
+    --fs-body: clamp(1rem, 0.94rem + 0.5vw, 1.125rem);
+    --fs-h2: clamp(1.25rem, 1.05rem + 1.2vw, 1.5rem);
+    --fs-h1: clamp(1.5rem, 1.2rem + 2.2vw, 2.2rem);
 }
 
 /* Усі елементи рахують розміри як content padding-border (зручніше для box model)  */
@@ -37,6 +41,7 @@ html {
 
 body {
     margin: 0;                  /* обнуляємо стандартні відступи браузера */
+    font-size: var(--fs-body);  /* базовий розмір тексту */
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
     color: var(--fg);           /* колір тексту зі змінної */
     background: var(--bg);      /* фон сторінки зі змінної */
@@ -69,13 +74,14 @@ ol[class] {
 ------------------------------------------------------*/
 .layout {
     display: grid;
-    grid-template-columns: 280px 1fr;               /* ліва колонка + контент */
-    grid-template-rows: auto 1fr auto;              /* header | контент | footer */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
-        "header header"
-        "sidenav main"
-        "footer footer";
-    min-height: 100vh;
+    "header"
+    "sidenav"
+    "main"
+    "footer";
+    min-height: 100dvh;
 }
 
 .header { grid-area: header; }
@@ -94,7 +100,7 @@ ol[class] {
 .header__title {
     margin: 0;
     padding: var(--space-4) var(--space-6) 0 var(--space-6);
-    font-size: 1.5rem;
+    font-size: var(--fs-h1);
     color: var(--brand);
 }
 
@@ -179,13 +185,13 @@ ol[class] {
 
 .main__title {
     margin: 0 0 var(--space-6);
-    font-size: 1.6rem;
+    font-size: var(--fs-h2);
 }
 
 /* Секція новин */
 .news__title {
     margin: 0 0 var(--space-4);
-    font-size: 1.6rem;
+    font-size: var(--fs-h2);
 }
 
 .news__list {
@@ -256,6 +262,8 @@ ol[class] {
 
 .media {
     margin: var(--space-6) 0;
+    aspect-ratio: 16/9;
+    overflow: clip;
 }
 
 .media--framed {
@@ -268,7 +276,9 @@ ol[class] {
 .media__img {
     display: block;
     width: 100%;
-    height: auto;
+    height:100%;
+    object-fit: cover;
+    object-position:center;
     border-radius: var(--radius-1);
 }
 
@@ -420,6 +430,7 @@ ol[class] {
 .footer__text {
     margin: 0;
     font-size: .95rem;
+    order: 2;
 }
 
 .footer__group-name {
@@ -427,10 +438,10 @@ ol[class] {
     font-weight: 700;
 }
 
-.footer__inner {
+.footer__inner{
     display: grid;
     gap: var(--space-4);
-    grid-template-columns: 1fr minmax(280px, 1fr);
+    grid-template-columns: 1fr;
     align-items: start;
     max-width: var(--container);
     margin: 0 auto;
@@ -438,7 +449,6 @@ ol[class] {
 
 .footer__contacts {
     font-style: normal;
-    background: #f2fffc;
 }
 
 .footer__contacts-title {
@@ -475,4 +485,57 @@ ol[class] {
 .footer__link:hover,
 .footer__link:focus-visible {
     text-decoration: underline;
+}
+
+/* 9) @media
+------------------------------------------------------*/
+
+@media (min-width: 640px) {
+    .layout {
+        grid-template-columns: 220px 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "header header"
+            "sidenav main"
+            "footer footer";
+    }
+
+    .footer__inner {
+        grid-template-columns: 1fr minmax(220px, 1fr);
+    }
+
+    .footer__text {
+        order: initial
+    }
+}
+
+@media (min-width: 1024px){
+    .layout{
+        grid-template-columns: 280px 1fr;
+    }
+
+    .footer__inner{
+        grid-template-columns: 1fr minmax(280px, 1fr);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #082617;
+        --surface: #0d2313;
+        --fg: #9ac0b1;
+        --fg-muted: #99d0af;
+        --border: #233b2e;
+        --brand: #43cf99;
+        --brand-600: #3d927a;
+        --brand-100: #327f5a;
+    }
+
+    .sidebar {
+        background: var(--surface);
+    }
+
+    .news-card__meta {
+        background: color-mix(in srgb, var(--surface) 92%, #fff 8%);
+    }
 }
